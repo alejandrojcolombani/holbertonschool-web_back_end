@@ -9,8 +9,7 @@ def print_log_stats():
     client = MongoClient("mongodb://127.0.0.1:27017")
     collection = client.logs.nginx
 
-    print("Nginx logs:")
-    print("\t{} logs".format(collection.count_documents({})))
+    print("{} logs".format(collection.count_documents({})))
     print("Methods:")
 
     for method in ("GET", "POST", "PUT", "PATCH", "DELETE"):
