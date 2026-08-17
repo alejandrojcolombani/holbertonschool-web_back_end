@@ -39,23 +39,23 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None,
-                        page_size: int = 10) -> Dict:
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Return a deletion-resilient page of the dataset.
         """
         if index is None:
             index = 0
 
         assert isinstance(index, int)
-        assert 0 <= index <= len(self.dataset())
-        assert isinstance(page_size, int) and page_size > 0
+        assert isinstance(page_size, int)
+        assert page_size > 0
+        assert index >= 0 and index < len(self.indexed_dataset())
 
         indexed_dataset = self.indexed_dataset()
 
         data = []
         current_index = index
 
-        while len(data) < page_size and current_index < len(self.dataset()):
+        while len(data) < page_size:
             if current_index in indexed_dataset:
                 data.append(indexed_dataset[current_index])
             current_index += 1
