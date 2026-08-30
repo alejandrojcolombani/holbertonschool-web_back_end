@@ -1,0 +1,1 @@
+This project focuses on data manipulation in modern JavaScript (ES6) using built-in array methods and data structures.
